@@ -8,18 +8,18 @@ class Stone {
     this.w = w;
     this.h = h;
     this.color = color;
+    this.image = loadImage("./assets/stone.png");
     World.add(world, this.body);
   }
 
   show() {
     let pos = this.body.position;
+    let angle = this.body.angle;
     push();
     translate(pos.x, pos.y);
-    strokeWeight(1);
-    fill("white");
-    ellipseMode(CENTER);
-    ellipse(0, 0, this.w, this.h);
-    noStroke();
+    rotate(angle);
+    imageMode(CENTER);
+    image(this.image, 0, 0, this.w, this.h);
     pop();
   }
 }

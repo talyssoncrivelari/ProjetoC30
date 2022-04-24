@@ -1,6 +1,7 @@
 class Bridge {
   constructor(nlink, pointA) {
     this.nlink = nlink;
+    this.image = loadImage("assets/wood.png");
     const group = Body.nextGroup(true);
     const rects = Composites.stack(100, 100, this.nlink, 1, 5, 5, function(
       x,
@@ -45,14 +46,12 @@ class Bridge {
   }
 
   drawVertices(vertices) {
-    beginShape();
-    fill("#FFF717");
-    noStroke();
-
+    
+    push();
     for (let i = 0; i < vertices.length; i++) {
-      vertex(vertices[i].x, vertices[i].y);
+      image(this.image, vertices[i].x, vertices[i].y, 80, 50);
     }
-    endShape(CLOSE);
+    pop();
   }
 
   showConstraints(constraints) {
